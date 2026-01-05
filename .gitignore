@@ -1,0 +1,131 @@
+# ===========================
+# ARTEPIX Smart Packaging
+# Git Ignore File
+# ===========================
+
+# ==================
+# SENSITIVE FILES
+# ==================
+# NEVER commit secrets!
+.env
+*.env
+.env.local
+.env.production
+backend/app/core/config.py  # Contains API keys - DO NOT COMMIT
+*.pem
+*.key
+*.jks
+*.keystore
+key.properties
+google-services.json
+GoogleService-Info.plist
+
+# ==================
+# Flutter/Dart
+# ==================
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/build/
+mobile/flutter_*.png
+
+# ==================
+# Android
+# ==================
+mobile/android/.gradle/
+mobile/android/.idea/
+mobile/android/local.properties
+mobile/android/captures/
+mobile/android/gradlew
+mobile/android/gradlew.bat
+mobile/android/gradle/wrapper/gradle-wrapper.jar
+mobile/android/app/release/
+mobile/android/app/debug/
+
+# ==================
+# iOS
+# ==================
+mobile/ios/Flutter/Generated.xcconfig
+mobile/ios/Flutter/flutter_export_environment.sh
+mobile/ios/Pods/
+mobile/ios/.symlinks/
+mobile/ios/Runner.xcworkspace/
+mobile/ios/Runner.xcodeproj/project.xcworkspace/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.hmap
+*.ipa
+
+# ==================
+# Python/Backend
+# ==================
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.Python
+backend/venv/
+backend/env/
+backend/.venv/
+backend/pip-log.txt
+backend/pip-delete-this-directory.txt
+backend/.pytest_cache/
+backend/htmlcov/
+backend/.coverage
+backend/.mypy_cache/
+
+# ==================
+# Database
+# ==================
+*.sqlite
+*.sqlite3
+*.db
+
+# ==================
+# Logs
+# ==================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+backend/logs/
+
+# ==================
+# OS Files
+# ==================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# ==================
+# Temporary Files
+# ==================
+*.tmp
+*.temp
+*.cache
+
+# ==================
+# Build Outputs
+# ==================
+dist/
+build/
+*.apk
+*.ipa
+*.aab
+
+# ==================
+# Node (if any)
+# ==================
+node_modules/
+package-lock.json

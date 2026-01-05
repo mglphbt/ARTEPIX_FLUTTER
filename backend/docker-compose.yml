@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: artepix_smart_backend
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/artepix_db
+      - MONGODB_URL=mongodb://mongo:27017
+      - SECRET_KEY=supersecretkey_change_me_in_production
+    depends_on:
+      - db
+      - mongo
+    networks:
+      - artepix_network
+
+  db:
+    container_name: artepix_smart_db
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=artepix_db
+    ports:
+      - "5434:5432" # Changed host port to avoid conflict with standard postgres
+    networks:
+      - artepix_network
+
+  mongo:
+    container_name: artepix_smart_mongo
+    image: mongo:6.0
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27018:27017" # Changed host port to avoid conflict
+    networks:
+      - artepix_network
+
+networks:
+  artepix_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  mongo_data:
