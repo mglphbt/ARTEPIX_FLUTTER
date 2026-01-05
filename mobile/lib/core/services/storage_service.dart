@@ -15,4 +15,17 @@ class StorageService {
   Future<void> deleteToken() async {
     await _storage.delete(key: _tokenKey);
   }
+
+  // Generic storage methods
+  Future<void> saveString(String key, String value) async {
+    await _storage.write(key: key, value: value);
+  }
+
+  Future<String?> getString(String key) async {
+    return await _storage.read(key: key);
+  }
+
+  Future<void> deleteKey(String key) async {
+    await _storage.delete(key: key);
+  }
 }

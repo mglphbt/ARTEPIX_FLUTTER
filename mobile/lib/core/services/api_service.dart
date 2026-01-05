@@ -21,12 +21,32 @@ class ApiService {
           return handler.next(options);
         },
         onError: (DioException e, handler) {
-           // Handle global errors (e.g. 401 Unauthorized -> Logout)
-           return handler.next(e);
+          // Handle global errors (e.g. 401 Unauthorized -> Logout)
+          return handler.next(e);
         },
       ),
     );
   }
 
   Dio get client => _dio;
+
+  // HTTP Methods for convenience
+  Future<Response> post(String path, {Map<String, dynamic>? data}) async {
+    return await _dio.post(path, data: data);
+  }
+
+  Future<Response> get(String path,
+      {Map<String, dynamic>? queryParameters}) async {
+    return await _dio.get(path, queryParameters: queryParameters);
+  }
+
+  Future<Response> put(String path,
+      {Map<String, dynamic>? data,
+      Map<String, dynamic>? queryParameters}) async {
+    return await _dio.put(path, data: data, queryParameters: queryParameters);
+  }
+
+  Future<Response> delete(String path) async {
+    return await _dio.delete(path);
+  }
 }
