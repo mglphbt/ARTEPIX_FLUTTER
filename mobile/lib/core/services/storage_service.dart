@@ -1,31 +1,36 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
-  final _storage = const FlutterSecureStorage();
   static const _tokenKey = 'auth_token';
 
   Future<void> saveToken(String token) async {
-    await _storage.write(key: _tokenKey, value: token);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_tokenKey, token);
   }
 
   Future<String?> getToken() async {
-    return await _storage.read(key: _tokenKey);
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_tokenKey);
   }
 
   Future<void> deleteToken() async {
-    await _storage.delete(key: _tokenKey);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_tokenKey);
   }
 
   // Generic storage methods
   Future<void> saveString(String key, String value) async {
-    await _storage.write(key: key, value: value);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, value);
   }
 
   Future<String?> getString(String key) async {
-    return await _storage.read(key: key);
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(key);
   }
 
   Future<void> deleteKey(String key) async {
-    await _storage.delete(key: key);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
   }
 }

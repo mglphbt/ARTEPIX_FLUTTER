@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'app/app.dart';
 import 'core/services/api_service.dart';
 import 'core/services/storage_service.dart';
@@ -12,7 +13,10 @@ import 'features/auth/services/auth_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Services
+  // Initialize SharedPreferences first
+  await SharedPreferences.getInstance();
+
+  // Services with simplified storage
   final storageService = StorageService();
   final apiService = ApiService(storageService);
   final authService = AuthService(apiService, storageService);
