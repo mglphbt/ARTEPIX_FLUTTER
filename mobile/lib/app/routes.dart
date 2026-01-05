@@ -65,11 +65,15 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/recommendation',
-      pageBuilder: (context, state) => _buildBlurTransitionPage(
-        context: context,
-        state: state,
-        child: const RecommendationAuthScreen(),
-      ),
+      pageBuilder: (context, state) {
+        // Extract onboarding answers from extra
+        final onboardingAnswers = state.extra as Map<int, String>?;
+        return _buildBlurTransitionPage(
+          context: context,
+          state: state,
+          child: RecommendationAuthScreen(onboardingAnswers: onboardingAnswers),
+        );
+      },
     ),
     GoRoute(
       path: '/login',
