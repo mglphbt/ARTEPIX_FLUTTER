@@ -49,7 +49,7 @@ dependencies:
   iconsax: ^0.0.8
   
   # Google Sign-In
-  google_sign_in: ^6.2.21
+  google_sign_in: ^6.2.2
 
 dev_dependencies:
   flutter_test:
