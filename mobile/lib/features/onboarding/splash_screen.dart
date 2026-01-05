@@ -78,9 +78,10 @@ class _SplashScreenState extends State<SplashScreen>
                       ],
                     ),
                     padding: const EdgeInsets.all(24),
-                    child: Image.asset(
-                      'assets/images/logo_splash.png',
-                      fit: BoxFit.contain,
+                    child: const Icon(
+                      Icons.inventory_2_rounded,
+                      size: 80,
+                      color: Color(0xFF00D9FF),
                     ),
                   ),
                 ),
