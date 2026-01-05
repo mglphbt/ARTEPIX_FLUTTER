@@ -59,7 +59,8 @@ class _OnboardingScreenState extends State<OnboardingScreen>
         _currentStep++;
       });
     } else {
-      context.go('/recommendation');
+      // Pass onboarding data to recommendation screen
+      context.go('/recommendation', extra: _selectedAnswers);
     }
   }
 
