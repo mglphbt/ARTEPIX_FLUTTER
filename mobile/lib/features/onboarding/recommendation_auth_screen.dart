@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:ui' as ui;
 import '../../core/theme/colors.dart';
-import '../../core/services/onboarding_service.dart';
-import '../../core/services/api_service.dart';
-import '../../core/services/storage_service.dart';
-import '../auth/bloc/auth_bloc.dart';
-import 'models/onboarding_data.dart';
 
 /// Combined Recommendation + Auth Screen
 /// Auto-responsive - no scrolling, fits any screen
@@ -24,18 +18,6 @@ class RecommendationAuthScreen extends StatefulWidget {
 class _RecommendationAuthScreenState extends State<RecommendationAuthScreen> {
   final PageController _pageController = PageController(viewportFraction: 0.72);
   int _currentPage = 0;
-  late final OnboardingService _onboardingService;
-  bool _isSavingProfile = false;
-
-  @override
-  void initState() {
-    super.initState();
-    final storageService = StorageService();
-    _onboardingService = OnboardingService(
-      ApiService(storageService),
-      storageService,
-    );
-  }
 
   final List<Map<String, dynamic>> _recommendations = [
     {
