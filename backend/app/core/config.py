@@ -49,6 +49,9 @@ class Settings(BaseSettings):
     SMTP_EMAIL: str = "no-reply@artepix.co.id"
     SMTP_PASSWORD: str = "$UAPaamHNM2025$"
     
+    # Google Gemini AI
+    GEMINI_API_KEY: str = ""  # Set via environment variable
+    
     # OTP Settings
     OTP_EXPIRE_MINUTES: int = 5
 
